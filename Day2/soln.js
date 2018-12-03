@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const input = fs.readFileSync(path.join(__dirname, 'input.js'), 'UTF8');
+const input = fs.readFileSync(path.join(__dirname, 'input.txt'), 'UTF8');
 const inputArray = input.split('\n');
 
 // const testInputArray  = ['abcdef', 'bababc', 'abbcde', 'abcccd', 'aabcdd', 'abcdee', 'ababab'];
@@ -45,13 +45,32 @@ const part2 = () => {
     let diff1;
     let diff2;
     let diffSeen = false;
+    let winnerFound = false;
+    let resultingWord = '';
 
-    inputArraySorted.forEach((eachInput, index) => {
-        for (let letter in eachInput) {
-            const nextInput = inputArraySorted[index+1];
-            for 
+    inputArraySorted.some((eachInput, index) => {
+        if (index === inputArraySorted.length -1 ) return true;
+        for (let i = 0; i < eachInput.length; i++) {
+            let nextInput = inputArraySorted[index+1];
+            if (eachInput[i] !== nextInput[i]) {
+                if (!diffSeen) {
+                    diffSeen = true;
+                    diff1 = eachInput[i];
+                    diff2 = nextInput[i];
+                    resultingWord = eachInput.slice(0, i) + eachInput.slice(i+1);
+                } else {
+                    diffSeen = false;
+                    break;
+                }
+            }
+            if (i === eachInput.length - 1) {
+                winnerFound = true;
+                console.log(eachInput, nextInput, diff1, diff2, resultingWord);
+            }
         }
-    })
+        return winnerFound;
+    });
+    return resultingWord;
 }
 
 // const part1soln = part1();
