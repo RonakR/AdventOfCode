@@ -1,0 +1,23 @@
+{
+  "name": "AdventOfCode",
+  "version": "1.0.0",
+  "description": "My solutions for https://adventofcode.com/2018",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RonakR/AdventOfCode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RonakR/AdventOfCode/issues"
+  },
+  "homepage": "https://github.com/RonakR/AdventOfCode#readme",
+  "dependencies": {
+    "ramda": "^0.26.1"
+  }
+}
