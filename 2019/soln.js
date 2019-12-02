@@ -11,7 +11,6 @@ const subtract2 = R.subtract(R.__, 2)
 const fuelCalculation = R.compose(subtract2(), floor(), divideBy3())
 
 const part1 = massArray => {
-  // return massArray.reduce((acc, mass) => acc + fuelCalculation(mass), 0)
   return R.reduce((acc, mass) => acc + fuelCalculation(mass), 0, massArray)
 }
 
