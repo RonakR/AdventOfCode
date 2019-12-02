@@ -18,18 +18,17 @@ const part2 = () => {
   const reduceFuelCalculations = R.reduce((acc, fuel) => acc + fuel, 0)
 
   const fuelCalculationIsGTZero = R.compose(
-    R.lte(0),
-    R.tap(x => console.log(x)),
+    R.lte(R.__, 0),
     R.curry(fuelCalculation)
   )
 
   const mapMassToFuelCosts = R.map(mass => {
     let fuelValue = fuelCalculation(mass)
-    let acc = 0
+    let acc = fuelValue
     R.until(fuelCalculationIsGTZero, () => {
-      console.log('fuelValue', fuelValue)
-      acc = acc + fuelValue
       fuelValue = fuelCalculation(fuelValue)
+      acc = acc + fuelValue
+      return fuelValue
     })(fuelValue)
     return acc
   })
