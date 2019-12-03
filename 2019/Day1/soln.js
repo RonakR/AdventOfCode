@@ -8,7 +8,7 @@ const inputArray = input.split('\n')
 const divideBy3 = R.divide(R.__, 3)
 const floor = R.curry(Math.floor)
 const subtract2 = R.subtract(R.__, 2)
-const fuelCalculation = R.compose(subtract2(), floor(), divideBy3())
+const fuelCalculation = R.compose(subtract2, floor, divideBy3)
 
 const part1 = massArray => {
   return R.reduce((acc, mass) => acc + fuelCalculation(mass), 0, massArray)
